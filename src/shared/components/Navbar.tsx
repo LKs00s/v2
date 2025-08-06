@@ -164,9 +164,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
         : 'bg-white/95 border-gray-200'
     } backdrop-blur-sm shadow-lg border-b z-40`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 min-w-0">
           {/* Logo and Brand */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
               <div className="w-10 h-10 bg-gradient-to-r from-slate-700 to-blue-800 rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <div className="relative">
@@ -175,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   <div className="w-1.5 h-1.5 bg-slate-300 rounded-full absolute top-2 left-3.5"></div>
                 </div>
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden md:block">
                 <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   Operations Analytics Platform
                 </h1>
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-1 justify-center min-w-0">
             <NavLink to="/">Inicio</NavLink>
             
             <DropdownMenu
@@ -206,10 +206,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               </DropdownItem>
             </DropdownMenu>
             
-            <NavLink to="/planillas">Planillas de Registro</NavLink>
+            <NavLink to="/planillas">Planillas</NavLink>
             
             <DropdownMenu
-              title="Suministros y Serv."
+              title="Suministros"
               isOpen={isBasesDeDatosOpen}
               setIsOpen={setIsBasesDeDatosOpen}
               ref={basesDeDatosRef}
@@ -247,7 +247,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
           </nav>
 
           {/* Right side controls */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 flex-shrink-0">
             {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
@@ -264,31 +264,31 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
 
             {/* User authentication */}
             {user && isSupabaseConfigured() ? (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2">
                 <span className={`hidden sm:block text-sm font-medium ${
                   darkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>
+                } truncate max-w-[120px]`}>
                   {user.email}
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="flex items-center px-3 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   aria-label="Cerrar sesión"
                 >
                   <LogOut className="w-4 h-4 mr-2" />
-                  <span className="hidden sm:inline">Cerrar Sesión</span>
+                  <span className="hidden md:inline">Cerrar</span>
                 </button>
               </div>
             ) : isSupabaseConfigured() ? (
               <Link
                 to="/login"
-                className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="flex items-center px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <User className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">Iniciar Sesión</span>
+                <span className="hidden md:inline">Login</span>
               </Link>
             ) : (
-              <div className="px-3 py-2 bg-yellow-100 border border-yellow-300 rounded-xl text-yellow-800 text-xs">
+              <div className="px-2 py-1 bg-yellow-100 border border-yellow-300 rounded-lg text-yellow-800 text-xs">
                 Modo Demo
               </div>
             )}
@@ -296,7 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-xl transition-all duration-200 ${
+              className={`lg:hidden p-2 rounded-xl transition-all duration-200 flex-shrink-0 ${
                 darkMode 
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' 
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
