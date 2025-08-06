@@ -62,17 +62,99 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
   }, [data]);
 
   const uniqueLocations = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Ubicación');
-  }, []);
+    let baseData = filteredDataForFilters;
+    
+    if (filters.tipoEvento) baseData = baseData.filter(row => row['Tipo de evento'] === filters.tipoEvento);
+    if (filters.autor) baseData = baseData.filter(row => row['Autor'] === filters.autor);
+    if (filters.tag) baseData = baseData.filter(row => row['Tag del equipo'] === filters.tag);
+    if (filters.anoMes) {
+      baseData = baseData.filter(row => {
+        const eventDate = row['Fecha detección anomalía'];
+        if (eventDate) {
+          const parts = eventDate.split('-');
+          if (parts.length === 3) {
+            const eventYearMonth = `${parts[2]}-${parts[1]}`;
+            if (filters.anoMes!.length === 4) {
+              return eventYearMonth.startsWith(filters.anoMes!);
+            } else {
+              return eventYearMonth === filters.anoMes;
+            }
+          }
+        }
+        return false;
+      });
+    }
+    
+    return eventService.getUniqueValues(baseData, 'Ubicación');
+  }, [filteredDataForFilters, filters.tipoEvento, filters.autor, filters.tag, filters.anoMes]);
 
   const uniqueResponsibles = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Autor');
-  }, []);
+    let baseData = filteredDataForFilters;
+    
+    if (filters.tipoEvento) baseData = baseData.filter(row => row['Tipo de evento'] === filters.tipoEvento);
+    if (filters.ubicacion) baseData = baseData.filter(row => row['Ubicación'] === filters.ubicacion);
+    if (filters.tag) baseData = baseData.filter(row => row['Tag del equipo'] === filters.tag);
+    if (filters.anoMes) {
+      baseData = baseData.filter(row => {
+        const eventDate = row['Fecha detección anomalía'];
+        if (eventDate) {
+          const parts = eventDate.split('-');
+          if (parts.length === 3) {
+            const eventYearMonth = `${parts[2]}-${parts[1]}`;
+            if (filters.anoMes!.length === 4) {
+              return eventYearMonth.startsWith(filters.anoMes!);
+            } else {
+              return eventYearMonth === filters.anoMes;
+            }
+          }
+        }
+        return false;
+      });
+    }
+    
+    return eventService.getUniqueValues(baseData, 'Autor');
+  }, [filteredDataForFilters, filters.tipoEvento, filters.ubicacion, filters.tag, filters.anoMes]);
 
   const uniqueTags = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Tag del equipo');
-  }, []);
+    let baseData = filteredDataForFilters;
+    
+    if (filters.tipoEvento) baseData = baseData.filter(row => row['Tipo de evento'] === filters.tipoEvento);
+    if (filters.ubicacion) baseData = baseData.filter(row => row['Ubicación'] === filters.ubicacion);
+    if (filters.autor) baseData = baseData.filter(row => row['Autor'] === filters.autor);
+    if (filters.anoMes) {
+      baseData = baseData.filter(row => {
+        const eventDate = row['Fecha detección anomalía'];
+        if (eventDate) {
+          const parts = eventDate.split('-');
+          if (parts.length === 3) {
+            const eventYearMonth = `${parts[2]}-${parts[1]}`;
+            if (filters.anoMes!.length === 4) {
+              return eventYearMonth.startsWith(filters.anoMes!);
+            } else {
+              return eventYearMonth === filters.anoMes;
+            }
+          }
+        }
+        return false;
+      });
+    }
+    
+    return eventService.getUniqueValues(baseData, 'Tag del equipo');
+  }, [filteredDataForFilters, filters.tipoEvento, filters.ubicacion, filters.autor, filters.anoMes]);
 
+  // Datos filtrados para calcular opciones de filtros dinámicos
+  const filteredDataForFilters = useMemo(() => {
+    let baseData = data;
+    
+    if (filters.search) {
+      baseData = baseData.filter(row => {
+        const searchableText = Object.values(row).join(' ').toLowerCase();
+        return searchableText.includes(filters.search!.toLowerCase());
+      });
+    }
+    
+    return baseData;
+  }, [data, filters.search]);
   if (loading) {
     return (
       <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'} flex items-center justify-center`}>
