@@ -70,7 +70,7 @@ export class EventService {
       {
         "Marca temporal": "2025-07-27T22:29:42.109-04:00",
         "Dirección de correo electrónico": "daniel@ejemplo.com",
-        "Tipo de tarjeta": "Orden de Mantenimiento",
+        "Tipo de evento": "Orden de Mantenimiento",
         "Nro de tarjeta o aviso": "3-4",
         "Ubicación": "Casa",
         "Autor": "Daniel",
@@ -91,7 +91,7 @@ export class EventService {
       {
         "Marca temporal": "2025-07-27T23:45:02.418-04:00",
         "Dirección de correo electrónico": "daniel.rojas@ejemplo.com",
-        "Tipo de tarjeta": "Tarjeta de seguridad",
+        "Tipo de evento": "Tarjeta de seguridad",
         "Nro de tarjeta o aviso": "100",
         "Ubicación": "Sala máquinas 10",
         "Autor": "Daniel Rojas",
@@ -112,7 +112,7 @@ export class EventService {
       {
         "Marca temporal": "2025-07-27T23:45:02.418-04:00",
         "Dirección de correo electrónico": "daniel.rojas@ejemplo.com",
-        "Tipo de tarjeta": "Tarjeta de Mantenimiento",
+        "Tipo de evento": "Tarjeta de Mantenimiento",
         "Nro de tarjeta o aviso": "201",
         "Ubicación": "Sala máquinas 5",
         "Autor": "Daniel Rojas",

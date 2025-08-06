@@ -202,17 +202,17 @@ export const EventList: React.FC<EventListProps> = ({
                     </span>
                   </div>
 
-                  {/* Tipo de Tarjeta y Número */}
+                  {/* Tipo de Evento y Número */}
                   <div className="flex items-center justify-between">
                     <span className={`text-xs font-medium ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      Tipo de tarjeta:
+                      Tipo de evento:
                     </span>
                     <span className={`text-xs font-semibold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {event['Tipo de tarjeta'] || 'No especificado'}
+                      {event['Tipo de evento'] || 'No especificado'}
                     </span>
                   </div>
 

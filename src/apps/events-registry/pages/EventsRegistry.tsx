@@ -58,7 +58,7 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
 
   // Valores únicos para filtros
   const uniqueTypes = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Tipo de tarjeta');
+    return eventService.getUniqueValues(data, 'Tipo de evento');
   }, [data]);
 
   const uniqueLocations = useMemo(() => {

@@ -159,14 +159,14 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           <label className={`block text-xs font-medium mb-1 ${
             darkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            Tipo de Tarjeta
+            Tipo de Evento
           </label>
           <AlertTriangle className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
             darkMode ? 'text-gray-400' : 'text-gray-400'
           }`} />
           <select
-            value={filters.tipoTarjeta || ''}
-            onChange={(e) => handleFilterChange('tipoTarjeta', e.target.value)}
+            value={filters.tipoEvento || ''}
+            onChange={(e) => handleFilterChange('tipoEvento', e.target.value)}
             className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
               darkMode 
                 ? 'bg-gray-700 border-gray-600 text-white' 

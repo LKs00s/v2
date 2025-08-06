@@ -1,7 +1,7 @@
 export interface MaintenanceEvent {
   "Marca temporal": string;
   "Dirección de correo electrónico": string;
-  "Tipo de tarjeta": string;
+  "Tipo de evento": string;
   "Nro de tarjeta o aviso": string;
   "Ubicación": string;
   "Autor": string;
@@ -31,7 +31,7 @@ export interface MaintenanceEventLegacy {
 export interface EventFilters {
   search?: string;
   anoMes?: string;
-  tipoTarjeta?: string;
+  tipoEvento?: string;
   autor?: string;
   ubicacion?: string;
   tag?: string;
