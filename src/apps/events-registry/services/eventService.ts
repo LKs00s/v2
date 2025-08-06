@@ -68,61 +68,67 @@ export class EventService {
   private loadSampleData(): MaintenanceEvent[] {
     return [
       {
-        "Timestamp": "2025-07-27T22:29:42.109-04:00",
+        "Marca temporal": "2025-07-27T22:29:42.109-04:00",
+        "Dirección de correo electrónico": "daniel@ejemplo.com",
         "Tipo de tarjeta": "Orden de Mantenimiento",
         "Nro de tarjeta o aviso": "3-4",
         "Ubicación": "Casa",
         "Autor": "Daniel",
-        "Responsable de solución": "GTA",
         "Fecha detección anomalía": "2025-06-26",
-        "Hora de detección": "18:00",
-        "Descripción anomalía": "Borrador de sello",
+        "Hora detección anomalía": "18:00",
+        "Descripción de anomalía": "Borrador de sello",
         "Acción propuesta": "Cambiar el sello",
         "Tag del equipo": "",
-        "Registro evento 1": "https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg",
-        "Registro evento 2": "https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg",
-        "Registro evento 3": "",
-        "Registro solución 1": "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg",
-        "Registro solución 2": "https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg",
-        "Registro solución 3": ""
+        "Registro de eventos": "Registro general de eventos",
+        "Registro de soluciones": "Registro general de soluciones",
+        "Registro 1": "https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg",
+        "Registro 2": "https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg",
+        "Registro 3": "",
+        "Solución 1": "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg",
+        "Solución 2": "https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg",
+        "Solución 3": ""
       },
       {
-        "Timestamp": "2025-07-27T23:45:02.418-04:00",
+        "Marca temporal": "2025-07-27T23:45:02.418-04:00",
+        "Dirección de correo electrónico": "daniel.rojas@ejemplo.com",
         "Tipo de tarjeta": "Tarjeta de seguridad",
         "Nro de tarjeta o aviso": "100",
         "Ubicación": "Sala máquinas 10",
         "Autor": "Daniel Rojas",
-        "Responsable de solución": "GTM",
         "Fecha detección anomalía": "06-07-2024",
-        "Hora de detección": "18:00",
-        "Descripción anomalía": "Fuga de aire",
+        "Hora detección anomalía": "18:00",
+        "Descripción de anomalía": "Fuga de aire",
         "Acción propuesta": "Reparar el piping",
         "Tag del equipo": "110-CP-03",
-        "Registro evento 1": "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg",
-        "Registro evento 2": "",
-        "Registro evento 3": "",
-        "Registro solución 1": "",
-        "Registro solución 2": "",
-        "Registro solución 3": ""
+        "Registro de eventos": "Registro de fuga detectada",
+        "Registro de soluciones": "",
+        "Registro 1": "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg",
+        "Registro 2": "",
+        "Registro 3": "",
+        "Solución 1": "",
+        "Solución 2": "",
+        "Solución 3": ""
       },
       {
-        "Timestamp": "2025-07-27T23:45:02.418-04:00",
+        "Marca temporal": "2025-07-27T23:45:02.418-04:00",
+        "Dirección de correo electrónico": "daniel.rojas@ejemplo.com",
         "Tipo de tarjeta": "Tarjeta de Mantenimiento",
         "Nro de tarjeta o aviso": "201",
         "Ubicación": "Sala máquinas 5",
         "Autor": "Daniel Rojas",
-        "Responsable de solución": "GTA",
         "Fecha detección anomalía": "05-07-2024",
-        "Hora de detección": "18:00",
-        "Descripción anomalía": "Fuga de aire",
+        "Hora detección anomalía": "18:00",
+        "Descripción de anomalía": "Fuga de aire",
         "Acción propuesta": "Reparar el piping",
         "Tag del equipo": "110-CP-05",
-        "Registro evento 1": "https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg",
-        "Registro evento 2": "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg",
-        "Registro evento 3": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
-        "Registro solución 1": "",
-        "Registro solución 2": "",
-        "Registro solución 3": ""
+        "Registro de eventos": "Registro de mantenimiento preventivo",
+        "Registro de soluciones": "",
+        "Registro 1": "https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg",
+        "Registro 2": "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg",
+        "Registro 3": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+        "Solución 1": "",
+        "Solución 2": "",
+        "Solución 3": ""
       }
     ];
   }
@@ -165,9 +171,9 @@ export class EventService {
     const eventMedia: MediaItem[] = [];
     const solutionMedia: MediaItem[] = [];
 
-    // Procesar registros de eventos
+    // Procesar registros de eventos (Registro 1, 2, 3)
     for (let i = 1; i <= 3; i++) {
-      const url = event[`Registro evento ${i}` as keyof MaintenanceEvent];
+      const url = event[`Registro ${i}` as keyof MaintenanceEvent];
       if (url && url.trim()) {
         const fileId = this.getGoogleDriveFileId(url);
         const fileType = this.detectFileType(url);
@@ -181,9 +187,9 @@ export class EventService {
       }
     }
 
-    // Procesar registros de soluciones
+    // Procesar registros de soluciones (Solución 1, 2, 3)
     for (let i = 1; i <= 3; i++) {
-      const url = event[`Registro solución ${i}` as keyof MaintenanceEvent];
+      const url = event[`Solución ${i}` as keyof MaintenanceEvent];
       if (url && url.trim()) {
         const fileId = this.getGoogleDriveFileId(url);
         const fileType = this.detectFileType(url);
@@ -315,7 +321,7 @@ export class EventService {
         if (!searchableText.includes(filters.search.toLowerCase())) return false;
       }
 
-      if (filters.tipo && event['Tipo de tarjeta'] !== filters.tipo) return false;
+      if (filters.tipo && event['Tipo de evento'] !== filters.tipo) return false;
       if (filters.ubicacion && event['Ubicación'] !== filters.ubicacion) return false;
       if (filters.responsable && event['Autor'] !== filters.responsable) return false;
       // Campos que no existen en el nuevo formato se ignoran por ahora
@@ -341,15 +347,15 @@ export class EventService {
           comparison = this.parseDate(a['Fecha detección anomalía']).getTime() - this.parseDate(b['Fecha detección anomalía']).getTime();
           break;
         case 'prioridad':
-          // Sin campo de prioridad, ordenar por tipo de tarjeta
-          comparison = a['Tipo de tarjeta'].localeCompare(b['Tipo de tarjeta']);
+          // Sin campo de prioridad, ordenar por tipo de evento
+          comparison = a['Tipo de evento'].localeCompare(b['Tipo de evento']);
           break;
         case 'estado':
-          // Sin campo de estado, ordenar por responsable
-          comparison = a['Responsable de solución'].localeCompare(b['Responsable de solución']);
+          // Sin campo de estado, ordenar por autor
+          comparison = a['Autor'].localeCompare(b['Autor']);
           break;
         case 'tipo':
-          comparison = a['Tipo de tarjeta'].localeCompare(b['Tipo de tarjeta']);
+          comparison = a['Tipo de evento'].localeCompare(b['Tipo de evento']);
           break;
       }
       

@@ -163,7 +163,7 @@ export const EventList: React.FC<EventListProps> = ({
                     <span className={`text-xs font-semibold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {event['Tipo de tarjeta'] || 'No especificado'}
+                      {event['Tipo de evento'] || 'No especificado'}
                     </span>
                   </div>
 
@@ -231,7 +231,7 @@ export const EventList: React.FC<EventListProps> = ({
                     <h3 className={`text-xs font-semibold ${
                     darkMode ? 'text-white' : 'text-gray-900'
                     } line-clamp-2`}>
-                      {event['Descripción anomalía']}
+                      {event['Descripción de anomalía']}
                     </h3>
                   </div>
                 </div>

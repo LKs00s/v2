@@ -1,21 +1,23 @@
 export interface MaintenanceEvent {
-  "Timestamp": string;
+  "Marca temporal": string;
+  "Dirección de correo electrónico": string;
   "Tipo de tarjeta": string;
   "Nro de tarjeta o aviso": string;
   "Ubicación": string;
   "Autor": string;
-  "Responsable de solución": string;
   "Fecha detección anomalía": string;
-  "Hora de detección": string;
-  "Descripción anomalía": string;
+  "Hora detección anomalía": string;
+  "Descripción de anomalía": string;
   "Acción propuesta": string;
   "Tag del equipo": string;
-  "Registro evento 1": string;
-  "Registro evento 2": string;
-  "Registro evento 3": string;
-  "Registro solución 1": string;
-  "Registro solución 2": string;
-  "Registro solución 3": string;
+  "Registro de eventos": string;
+  "Registro de soluciones": string;
+  "Registro 1": string;
+  "Registro 2": string;
+  "Registro 3": string;
+  "Solución 1": string;
+  "Solución 2": string;
+  "Solución 3": string;
 }
 
 // Mantener compatibilidad con campos anteriores
