@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { FileSpreadsheet } from 'lucide-react';
+import { FileSpreadsheet, RefreshCw } from 'lucide-react';
 import { Navbar } from './shared/components/Navbar';
 import { QuotationsAnalyzer } from './apps/quotations-analyzer/pages/QuotationsAnalyzer';
 import { EventsRegistry } from './apps/events-registry/pages/EventsRegistry';
@@ -67,6 +67,7 @@ const PlaceholderPage: React.FC<{ title: string; darkMode: boolean }> = ({ title
 
 function App() {
   const { user, loading } = useAuth();
+  const [darkMode, setDarkMode] = useState(false);
   const [defaultFilters] = useState<Filters>({ tipoCotizacion: 'Componente' });
 
   // Handle OAuth redirect from localhost
