@@ -114,31 +114,44 @@ Si deseas habilitar la autenticación:
 
 ```
 src/
-├── components/          # Componentes reutilizables
-│   ├── EventComparison.tsx
-│   ├── EventFilters.tsx
-│   ├── EventList.tsx
-│   ├── Navbar.tsx
-│   ├── QuotationCards.tsx
-│   ├── QuotationFilters.tsx
-│   └── QuotationTable.tsx
-├── hooks/              # Hooks personalizados
-│   └── useAuth.ts
-├── lib/                # Configuraciones
-│   └── supabase.ts
+├── apps/               # Aplicaciones independientes
+│   ├── quotations-analyzer/    # Analizador de cotizaciones
+│   │   ├── components/         # Componentes específicos
+│   │   ├── services/           # Lógica de negocio
+│   │   ├── types/              # Tipos TypeScript
+│   │   └── pages/              # Páginas principales
+│   ├── events-registry/        # Registro de eventos
+│   │   ├── components/         # Componentes específicos
+│   │   ├── services/           # Lógica de negocio
+│   │   ├── types/              # Tipos TypeScript
+│   │   └── pages/              # Páginas principales
+│   └── index.ts                # Exportaciones centralizadas
+├── shared/             # Recursos compartidos
+│   ├── components/             # Componentes reutilizables
+│   ├── hooks/                  # Hooks personalizados
+│   ├── lib/                    # Configuraciones
+│   └── types/                  # Tipos compartidos
 ├── pages/              # Páginas principales
-│   ├── EventsRegistry.tsx
 │   ├── Login.tsx
 │   ├── Register.tsx
 │   └── ForgotPassword.tsx
-├── services/           # Lógica de negocio
-│   ├── eventService.ts
-│   └── quotationService.ts
-├── types/              # Definiciones TypeScript
-│   ├── event.ts
-│   └── quotation.ts
 └── App.tsx             # Componente principal
 ```
+
+## 🏗️ Arquitectura Modular
+
+### **Principios de Organización**
+- **Apps independientes**: Cada aplicación tiene su propia carpeta con todos sus archivos
+- **Recursos compartidos**: Componentes, hooks y servicios reutilizables en `/shared`
+- **Separación clara**: Cada app es autónoma y puede desarrollarse independientemente
+- **Escalabilidad**: Fácil agregar nuevas apps sin afectar las existentes
+
+### **Beneficios de la Estructura**
+- ✅ **Mantenimiento**: Cada app es independiente y fácil de mantener
+- ✅ **Desarrollo**: Equipos pueden trabajar en apps diferentes sin conflictos
+- ✅ **Reutilización**: Componentes compartidos evitan duplicación
+- ✅ **Escalabilidad**: Agregar nuevas apps es simple y ordenado
+- ✅ **Testing**: Cada app puede testearse independientemente
 
 ## 🌐 Deployment y Embedding
 

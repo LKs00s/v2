@@ -142,7 +142,7 @@ export class EventService {
 
   // Obtener ID de archivo de Google Drive
   getGoogleDriveFileId(url: string): string | null {
-    if (!url || !url.includes('drive.google.com')) return [url];
+    if (!url || !url.includes('drive.google.com')) return null;
     
     const fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
     if (!fileIdMatch) return null;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2 } from 'lucide-react';
-import { signInWithEmail, signInWithGoogle } from '../lib/supabase';
+import { signInWithEmail, signInWithGoogle } from '../shared/lib/supabase';
 
 interface LoginProps {
   darkMode: boolean;

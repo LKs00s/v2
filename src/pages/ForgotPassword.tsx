@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowLeft, AlertCircle, Loader2, Check } from 'lucide-react';
-import { resetPassword } from '../lib/supabase';
+import { resetPassword } from '../shared/lib/supabase';
 
 interface ForgotPasswordProps {
   darkMode: boolean;

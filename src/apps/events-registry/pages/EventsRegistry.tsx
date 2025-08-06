@@ -58,7 +58,7 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
 
   // Valores únicos para filtros
   const uniqueTypes = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Tipo de evento');
+    return eventService.getUniqueValues(data, 'Tipo de tarjeta');
   }, [data]);
 
   const uniqueLocations = useMemo(() => {
@@ -66,16 +66,16 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
   }, [data]);
 
   const uniqueResponsibles = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Responsable');
+    return eventService.getUniqueValues(data, 'Autor');
   }, [data]);
 
   const uniqueStates = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Estado');
+    return eventService.getUniqueValues(data, 'Responsable de solución');
   }, [data]);
 
   const uniquePriorities = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Prioridad');
-  }, [data]);
+    return ['Alta', 'Media', 'Baja']; // Valores simulados
+  }, []);
 
   if (loading) {
     return (

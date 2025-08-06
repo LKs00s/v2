@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2, UserPlus, Check } from 'lucide-react';
-import { signUpWithEmail, signInWithGoogle } from '../lib/supabase';
+import { signUpWithEmail, signInWithGoogle } from '../shared/lib/supabase';
 
 interface RegisterProps {
   darkMode: boolean;
