@@ -25,12 +25,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
   const navigate = useNavigate();
   const location = useLocation();
   const [isBasesDeDatosOpen, setIsBasesDeDatosOpen] = useState(false);
-  const [isDashboardsOpen, setIsDashboardsOpen] = useState(false);
+  const [isMantenimientoOpen, setIsMantenimientoOpen] = useState(false);
   const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const basesDeDatosRef = useRef<HTMLDivElement>(null);
-  const dashboardsRef = useRef<HTMLDivElement>(null);
+  const mantenimientoRef = useRef<HTMLDivElement>(null);
   const appsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
@@ -39,8 +39,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
       if (basesDeDatosRef.current && !basesDeDatosRef.current.contains(event.target as Node)) {
         setIsBasesDeDatosOpen(false);
       }
-      if (dashboardsRef.current && !dashboardsRef.current.contains(event.target as Node)) {
-        setIsDashboardsOpen(false);
+      if (mantenimientoRef.current && !mantenimientoRef.current.contains(event.target as Node)) {
+        setIsMantenimientoOpen(false);
       }
       if (appsRef.current && !appsRef.current.contains(event.target as Node)) {
         setIsAppsOpen(false);
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
       role="menuitem"
       onClick={() => {
         setIsBasesDeDatosOpen(false);
-        setIsDashboardsOpen(false);
+        setIsMantenimientoOpen(false);
         setIsAppsOpen(false);
         setIsMobileMenuOpen(false);
       }}
@@ -212,25 +212,16 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
             </DropdownMenu>
 
             <DropdownMenu
-              title="Dashboards"
-              isOpen={isDashboardsOpen}
-              setIsOpen={setIsDashboardsOpen}
-              ref={dashboardsRef}
+              title="Mantenimiento"
+              isOpen={isMantenimientoOpen}
+              setIsOpen={setIsMantenimientoOpen}
+              ref={mantenimientoRef}
             >
               <DropdownItem to="/dashboards/plan-mantenimiento">
                 📊 Plan de Mantenimiento
               </DropdownItem>
               <DropdownItem to="/dashboards/gestion-presupuesto">
                 💰 Gestión de Presupuesto
-              </DropdownItem>
-              <DropdownItem to="/dashboards/general">
-                📈 Dashboard General
-              </DropdownItem>
-              <DropdownItem to="/dashboards/rendimiento">
-                ⚡ Rendimiento
-              </DropdownItem>
-              <DropdownItem to="/dashboards/comparativo">
-                📊 Análisis Comparativo
               </DropdownItem>
             </DropdownMenu>
           </nav>
@@ -415,12 +406,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                 </Link>
               </div>
 
-              {/* Mobile Dashboards */}
+              {/* Mobile Mantenimiento */}
               <div className="space-y-1">
                 <div className={`px-3 py-2 text-base font-medium ${
                   darkMode ? 'text-gray-400' : 'text-gray-500'
                 }`}>
-                  Dashboards
+                  Mantenimiento
                 </div>
                 <Link
                   to="/dashboards/plan-mantenimiento"
@@ -451,36 +442,6 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   💰 Gestión de Presupuesto
-                </Link>
-                <Link
-                  to="/dashboards/general"
-                  className={`block px-6 py-2 rounded-md text-sm ${
-                    isActivePath('/dashboards/general')
-                      ? darkMode 
-                        ? 'bg-blue-900/50 text-blue-300' 
-                        : 'bg-blue-50 text-blue-700'
-                      : darkMode 
-                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  📈 Dashboard General
-                </Link>
-                <Link
-                  to="/dashboards/rendimiento"
-                  className={`block px-6 py-2 rounded-md text-sm ${
-                    isActivePath('/dashboards/rendimiento')
-                      ? darkMode 
-                        ? 'bg-blue-900/50 text-blue-300' 
-                        : 'bg-blue-50 text-blue-700'
-                      : darkMode 
-                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  ⚡ Rendimiento
                 </Link>
               </div>
             </div>

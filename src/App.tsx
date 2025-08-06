@@ -164,18 +164,6 @@ function App() {
                   path="/dashboards/gestion-presupuesto" 
                   element={<GestionPresupuesto darkMode={darkMode} />} 
                 />
-                <Route 
-                  path="/dashboards/general" 
-                  element={<PlaceholderPage title="Dashboard General" darkMode={darkMode} />} 
-                />
-                <Route 
-                  path="/dashboards/rendimiento" 
-                  element={<PlaceholderPage title="Dashboard de Rendimiento" darkMode={darkMode} />} 
-                />
-                <Route 
-                  path="/dashboards/comparativo" 
-                  element={<PlaceholderPage title="Análisis Comparativo" darkMode={darkMode} />} 
-                />
               </Routes>
             </ProtectedRoute>
           } 
