@@ -155,28 +155,21 @@ export const EventList: React.FC<EventListProps> = ({
                 </div>
 
                 <div className="space-y-2">
-                  {/* Tipo de Tarjeta */}
-                  <div className="flex items-center justify-between">
-                    <span className={`text-xs font-medium ${
-                      darkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>Tipo de tarjeta:</span>
-                    <span className={`text-xs font-semibold ${
+                  {/* Título del evento (Descripción de anomalía) */}
+                  <div className={`mb-3 pt-2 border-t ${
+                    darkMode ? 'border-gray-700' : 'border-gray-200'
+                  }`}>
+                    <h3 className={`text-sm font-bold ${
                       darkMode ? 'text-white' : 'text-gray-900'
+                    } line-clamp-2 mb-1`}>
+                      {event['Descripción de anomalía']}
+                    </h3>
+                    {/* Fecha como subtítulo */}
+                    <p className={`text-xs ${
+                      darkMode ? 'text-gray-400' : 'text-gray-500'
                     }`}>
-                      {event['Tipo de evento'] || 'No especificado'}
-                    </span>
-                  </div>
-
-                  {/* Número de Tarjeta o Aviso */}
-                  <div className="flex items-center justify-between">
-                    <span className={`text-xs font-medium ${
-                      darkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>Nro de tarjeta:</span>
-                    <span className={`text-xs font-semibold ${
-                      darkMode ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {event['Nro de tarjeta o aviso'] || 'No especificado'}
-                    </span>
+                      {event['Fecha detección anomalía'] || 'No especificado'}
+                    </p>
                   </div>
 
                   {/* Ubicación */}
@@ -209,30 +202,30 @@ export const EventList: React.FC<EventListProps> = ({
                     </span>
                   </div>
 
-                  {/* Fecha de Detección */}
+                  {/* Tipo de Tarjeta y Número */}
                   <div className="flex items-center justify-between">
                     <span className={`text-xs font-medium ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      <Calendar className="w-2 h-2 inline mr-1" />
-                      Fecha detección:
+                      Tipo de tarjeta:
                     </span>
                     <span className={`text-xs font-semibold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {event['Fecha detección anomalía'] || 'No especificado'}
+                      {event['Tipo de tarjeta'] || 'No especificado'}
                     </span>
                   </div>
 
-                  {/* Descripción del problema como título */}
-                  <div className={`mt-3 pt-2 border-t ${
-                    darkMode ? 'border-gray-700' : 'border-gray-200'
-                  }`}>
-                    <h3 className={`text-xs font-semibold ${
-                    darkMode ? 'text-white' : 'text-gray-900'
-                    } line-clamp-2`}>
-                      {event['Descripción de anomalía']}
-                    </h3>
+                  {/* Número de Tarjeta o Aviso */}
+                  <div className="flex items-center justify-between">
+                    <span className={`text-xs font-medium ${
+                      darkMode ? 'text-gray-400' : 'text-gray-600'
+                    }`}>Nro de tarjeta:</span>
+                    <span className={`text-xs font-semibold ${
+                      darkMode ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {event['Nro de tarjeta o aviso'] || 'No especificado'}
+                    </span>
                   </div>
                 </div>
               </div>
