@@ -2,7 +2,7 @@
 
 ## 📋 Descripción del Proyecto
 
-**Analizador de Cotizaciones** es un sistema profesional de análisis y gestión de cotizaciones desarrollado con React y TypeScript. La aplicación está diseñada para ser embebida en otras páginas web y proporciona herramientas avanzadas de análisis de datos empresariales.
+**App industrial del Área Técnica** es un sistema profesional de análisis y gestión de cotizaciones desarrollado con React y TypeScript. La aplicación está diseñada para ser embebida en otras páginas web y proporciona herramientas avanzadas de análisis de datos empresariales.
 
 ### 🎯 Propósito Principal
 - Análisis completo de cotizaciones empresariales
