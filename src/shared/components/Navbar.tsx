@@ -195,19 +195,13 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
             <NavLink to="/planillas">Planillas de Registro</NavLink>
             
             <DropdownMenu
-              title="Bases de Datos"
+              title="Suministros y Serv."
               isOpen={isBasesDeDatosOpen}
               setIsOpen={setIsBasesDeDatosOpen}
               ref={basesDeDatosRef}
             >
-              <DropdownItem to="/bases-de-datos/cotizaciones">
-                📊 Cotizaciones
-              </DropdownItem>
-              <DropdownItem to="/bases-de-datos/proveedores">
-                🏢 Proveedores
-              </DropdownItem>
-              <DropdownItem to="/bases-de-datos/productos">
-                📦 Productos
+              <DropdownItem to="/dashboards/riles-as">
+                🏭 RILes y A.S.
               </DropdownItem>
             </DropdownMenu>
 
@@ -372,12 +366,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                 <div className={`px-3 py-2 text-base font-medium ${
                   darkMode ? 'text-gray-400' : 'text-gray-500'
                 }`}>
-                  Bases de Datos
+                  Suministros y Serv.
                 </div>
                 <Link
-                  to="/bases-de-datos/cotizaciones"
+                  to="/dashboards/riles-as"
                   className={`block px-6 py-2 rounded-md text-sm ${
-                    isActivePath('/bases-de-datos/cotizaciones')
+                    isActivePath('/dashboards/riles-as')
                       ? darkMode 
                         ? 'bg-blue-900/50 text-blue-300' 
                         : 'bg-blue-50 text-blue-700'
@@ -387,22 +381,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  📊 Cotizaciones
-                </Link>
-                <Link
-                  to="/bases-de-datos/proveedores"
-                  className={`block px-6 py-2 rounded-md text-sm ${
-                    isActivePath('/bases-de-datos/proveedores')
-                      ? darkMode 
-                        ? 'bg-blue-900/50 text-blue-300' 
-                        : 'bg-blue-50 text-blue-700'
-                      : darkMode 
-                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  🏢 Proveedores
+                  🏭 RILes y A.S.
                 </Link>
               </div>
 

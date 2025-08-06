@@ -3,6 +3,7 @@ export { QuotationsAnalyzer } from './quotations-analyzer/pages/QuotationsAnalyz
 export { EventsRegistry } from './events-registry/pages/EventsRegistry';
 export { PlanMantenimiento } from './dashboards/plan-mantenimiento/pages/PlanMantenimiento';
 export { GestionPresupuesto } from './dashboards/gestion-presupuesto/pages/GestionPresupuesto';
+export { RilesAS } from './dashboards/riles-as/pages/RilesAS';
 
 // Tipos de apps
 export type { Quotation, QuotationFilters, SortOptions } from './quotations-analyzer/types/quotation';

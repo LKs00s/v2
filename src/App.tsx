@@ -6,6 +6,7 @@ import { QuotationsAnalyzer } from './apps/quotations-analyzer/pages/QuotationsA
 import { EventsRegistry } from './apps/events-registry/pages/EventsRegistry';
 import { PlanMantenimiento } from './apps/dashboards/plan-mantenimiento/pages/PlanMantenimiento';
 import { GestionPresupuesto } from './apps/dashboards/gestion-presupuesto/pages/GestionPresupuesto';
+import { RilesAS } from './apps/dashboards/riles-as/pages/RilesAS';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
@@ -141,18 +142,6 @@ function App() {
                   element={<PlaceholderPage title="Planillas de Registro" darkMode={darkMode} />} 
                 />
                 <Route 
-                  path="/bases-de-datos/cotizaciones" 
-                  element={<QuotationsAnalyzer darkMode={darkMode} />} 
-                />
-                <Route 
-                  path="/bases-de-datos/proveedores" 
-                  element={<PlaceholderPage title="Base de Datos - Proveedores" darkMode={darkMode} />} 
-                />
-                <Route 
-                  path="/bases-de-datos/productos" 
-                  element={<PlaceholderPage title="Base de Datos - Productos" darkMode={darkMode} />} 
-                />
-                <Route 
                   path="/registro-eventos" 
                   element={<EventsRegistry darkMode={darkMode} />} 
                 />
@@ -163,6 +152,10 @@ function App() {
                 <Route 
                   path="/dashboards/gestion-presupuesto" 
                   element={<GestionPresupuesto darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/dashboards/riles-as" 
+                  element={<RilesAS darkMode={darkMode} />} 
                 />
               </Routes>
             </ProtectedRoute>
