@@ -168,13 +168,11 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
           {/* Logo and Brand */}
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-slate-700 to-blue-800 rounded-xl flex items-center justify-center mr-3 shadow-lg">
-                <div className="relative">
-                  <div className="w-3 h-3 bg-white rounded-full absolute top-0 left-0"></div>
-                  <div className="w-2 h-2 bg-blue-300 rounded-full absolute top-1 left-2"></div>
-                  <div className="w-1.5 h-1.5 bg-slate-300 rounded-full absolute top-2 left-3.5"></div>
-                </div>
-              </div>
+              <img 
+                src="/Logo (2).png" 
+                alt="Operations Analytics Platform" 
+                className="w-10 h-10 mr-3 object-contain"
+              />
               <div className="hidden md:block">
                 <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   Operations Analytics Platform
