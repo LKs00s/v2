@@ -8,7 +8,9 @@ import {
   LogOut, 
   User, 
   Menu,
-  X
+  X,
+  Calculator,
+  Calendar
 } from 'lucide-react';
 import { supabase, signOut, isSupabaseConfigured } from '../lib/supabase';
 import { User as SupabaseUser } from '@supabase/supabase-js';
@@ -24,10 +26,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
   const location = useLocation();
   const [isBasesDeDatosOpen, setIsBasesDeDatosOpen] = useState(false);
   const [isDashboardsOpen, setIsDashboardsOpen] = useState(false);
+  const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const basesDeDatosRef = useRef<HTMLDivElement>(null);
   const dashboardsRef = useRef<HTMLDivElement>(null);
+  const appsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -37,6 +41,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
       }
       if (dashboardsRef.current && !dashboardsRef.current.contains(event.target as Node)) {
         setIsDashboardsOpen(false);
+      }
+      if (appsRef.current && !appsRef.current.contains(event.target as Node)) {
+        setIsAppsOpen(false);
       }
     };
 
@@ -119,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
   const DropdownItem: React.FC<{ to: string; children: React.ReactNode }> = ({ to, children }) => (
     <Link
       to={to}
-      className={`block px-4 py-3 text-sm transition-colors duration-200 ${
+      className={`flex items-center px-4 py-3 text-sm transition-colors duration-200 ${
         isActivePath(to)
           ? darkMode
             ? 'bg-blue-900/50 text-blue-300'
@@ -132,6 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
       onClick={() => {
         setIsBasesDeDatosOpen(false);
         setIsDashboardsOpen(false);
+        setIsAppsOpen(false);
         setIsMobileMenuOpen(false);
       }}
     >
@@ -167,8 +175,24 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <NavLink to="/">Inicio</NavLink>
+            
+            <DropdownMenu
+              title="Apps"
+              isOpen={isAppsOpen}
+              setIsOpen={setIsAppsOpen}
+              ref={appsRef}
+            >
+              <DropdownItem to="/">
+                <Calculator className="w-4 h-4 mr-2" />
+                Analizador de Cotizaciones
+              </DropdownItem>
+              <DropdownItem to="/registro-eventos">
+                <Calendar className="w-4 h-4 mr-2" />
+                Registro de Eventos
+              </DropdownItem>
+            </DropdownMenu>
+            
             <NavLink to="/planillas">Planillas de Registro</NavLink>
-            <NavLink to="/registro-eventos">Registro de Eventos</NavLink>
             
             <DropdownMenu
               title="Bases de Datos"
@@ -288,6 +312,48 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               >
                 Inicio
               </Link>
+              
+              {/* Mobile Apps */}
+              <div className="space-y-1">
+                <div className={`px-3 py-2 text-base font-medium ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  Apps
+                </div>
+                <Link
+                  to="/"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/')
+                      ? darkMode 
+                        ? 'bg-blue-900/50 text-blue-300' 
+                        : 'bg-blue-50 text-blue-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Calculator className="w-4 h-4 inline mr-2" />
+                  Analizador de Cotizaciones
+                </Link>
+                <Link
+                  to="/registro-eventos"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/registro-eventos')
+                      ? darkMode 
+                        ? 'bg-orange-900/50 text-orange-300' 
+                        : 'bg-orange-50 text-orange-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Calendar className="w-4 h-4 inline mr-2" />
+                  Registro de Eventos
+                </Link>
+              </div>
+              
               <Link
                 to="/planillas"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
@@ -302,22 +368,6 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Planillas de Registro
-              </Link>
-              
-              <Link
-                to="/registro-eventos"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActivePath('/registro-eventos')
-                    ? darkMode 
-                      ? 'bg-orange-900/50 text-orange-300' 
-                      : 'bg-orange-50 text-orange-700'
-                    : darkMode 
-                      ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Registro de Eventos
               </Link>
               
               {/* Mobile Bases de Datos */}
