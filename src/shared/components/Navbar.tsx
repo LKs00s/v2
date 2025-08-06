@@ -217,6 +217,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               setIsOpen={setIsDashboardsOpen}
               ref={dashboardsRef}
             >
+              <DropdownItem to="/dashboards/plan-mantenimiento">
+                📊 Plan de Mantenimiento
+              </DropdownItem>
               <DropdownItem to="/dashboards/general">
                 📈 Dashboard General
               </DropdownItem>
@@ -416,6 +419,21 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                 }`}>
                   Dashboards
                 </div>
+                <Link
+                  to="/dashboards/plan-mantenimiento"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/plan-mantenimiento')
+                      ? darkMode 
+                        ? 'bg-green-900/50 text-green-300' 
+                        : 'bg-green-50 text-green-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  📊 Plan de Mantenimiento
+                </Link>
                 <Link
                   to="/dashboards/general"
                   className={`block px-6 py-2 rounded-md text-sm ${

@@ -4,6 +4,7 @@ import { FileSpreadsheet, RefreshCw } from 'lucide-react';
 import { Navbar } from './shared/components/Navbar';
 import { QuotationsAnalyzer } from './apps/quotations-analyzer/pages/QuotationsAnalyzer';
 import { EventsRegistry } from './apps/events-registry/pages/EventsRegistry';
+import { PlanMantenimiento } from './apps/dashboards/plan-mantenimiento/pages/PlanMantenimiento';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
@@ -154,6 +155,9 @@ function App() {
                   path="/registro-eventos" 
                   element={<EventsRegistry darkMode={darkMode} />} 
                 />
+                <Route 
+                  path="/dashboards/plan-mantenimiento" 
+                  element={<PlanMantenimiento darkMode={darkMode} />} 
                 <Route 
                   path="/dashboards/general" 
                   element={<PlaceholderPage title="Dashboard General" darkMode={darkMode} />} 
