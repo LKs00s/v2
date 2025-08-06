@@ -203,6 +203,18 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               <DropdownItem to="/dashboards/riles-as">
                 🏭 RILes y A.S.
               </DropdownItem>
+              <DropdownItem to="/dashboards/energia-electrica">
+                ⚡ Energía Eléctrica
+              </DropdownItem>
+              <DropdownItem to="/dashboards/agua">
+                💧 Agua
+              </DropdownItem>
+              <DropdownItem to="/dashboards/vapor">
+                🌫️ Vapor
+              </DropdownItem>
+              <DropdownItem to="/dashboards/nitrogeno">
+                🧪 Nitrógeno
+              </DropdownItem>
             </DropdownMenu>
 
             <DropdownMenu
@@ -382,6 +394,66 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   🏭 RILes y A.S.
+                </Link>
+                <Link
+                  to="/dashboards/energia-electrica"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/energia-electrica')
+                      ? darkMode 
+                        ? 'bg-blue-900/50 text-blue-300' 
+                        : 'bg-blue-50 text-blue-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  ⚡ Energía Eléctrica
+                </Link>
+                <Link
+                  to="/dashboards/agua"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/agua')
+                      ? darkMode 
+                        ? 'bg-blue-900/50 text-blue-300' 
+                        : 'bg-blue-50 text-blue-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  💧 Agua
+                </Link>
+                <Link
+                  to="/dashboards/vapor"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/vapor')
+                      ? darkMode 
+                        ? 'bg-blue-900/50 text-blue-300' 
+                        : 'bg-blue-50 text-blue-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🌡️ Vapor
+                </Link>
+                <Link
+                  to="/dashboards/nitrogeno"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/nitrogeno')
+                      ? darkMode 
+                        ? 'bg-blue-900/50 text-blue-300' 
+                        : 'bg-blue-50 text-blue-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🧪 Nitrógeno
                 </Link>
                 <Link
                   to="/dashboards/energia-electrica"
