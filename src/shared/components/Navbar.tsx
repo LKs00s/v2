@@ -158,15 +158,19 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
           {/* Logo and Brand */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
-                <FileSpreadsheet className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-gradient-to-r from-slate-700 to-blue-800 rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                <div className="relative">
+                  <div className="w-3 h-3 bg-white rounded-full absolute top-0 left-0"></div>
+                  <div className="w-2 h-2 bg-blue-300 rounded-full absolute top-1 left-2"></div>
+                  <div className="w-1.5 h-1.5 bg-slate-300 rounded-full absolute top-2 left-3.5"></div>
+                </div>
               </div>
               <div className="hidden sm:block">
                 <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Analizador de Cotizaciones
+                  Operations Analytics Platform
                 </h1>
                 <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Sistema profesional de análisis
+                  Área Técnica
                 </p>
               </div>
             </Link>
