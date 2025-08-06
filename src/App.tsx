@@ -161,6 +161,22 @@ function App() {
                   path="/dashboards/riles-as" 
                   element={<RilesAS darkMode={darkMode} />} 
                 />
+                <Route 
+                  path="/dashboards/energia-electrica" 
+                  element={<EnergiaElectrica darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/dashboards/agua" 
+                  element={<Agua darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/dashboards/vapor" 
+                  element={<Vapor darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/dashboards/nitrogeno" 
+                  element={<Nitrogeno darkMode={darkMode} />} 
+                />
               </Routes>
             </ProtectedRoute>
           } 
