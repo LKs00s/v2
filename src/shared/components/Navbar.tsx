@@ -57,6 +57,16 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
       if (error) throw error;
       navigate('/login');
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      
+      // If session is already missing, treat as successful logout
+      if (errorMessage.includes('Auth session missing!') || 
+          errorMessage.includes('session_not_found')) {
+        console.warn('Session already expired, proceeding with logout');
+        navigate('/login');
+        return;
+      }
+      
       console.error('Error signing out:', error);
     }
   };
