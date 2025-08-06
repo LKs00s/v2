@@ -103,88 +103,40 @@ export const HomePage: React.FC<HomePageProps> = ({ darkMode }) => {
     icon: React.ElementType;
     path: string;
     gradient: string;
-    size?: 'small' | 'large';
-  }> = ({ title, description, icon: Icon, path, gradient, size = 'small' }) => (
+  }> = ({ title, description, icon: Icon, path, gradient }) => (
     <Link
       to={path}
-      className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
-        size === 'large' ? 'p-8' : 'p-6'
-      } ${
+      className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl p-6 ${
         darkMode 
           ? 'bg-gray-800/50 border-gray-700 hover:bg-gray-800/70' 
           : 'bg-white/80 border-gray-200 hover:bg-white'
       } backdrop-blur-sm border shadow-xl`}
     >
       <div className="relative z-10">
-        <div className={`w-${size === 'large' ? '16' : '12'} h-${size === 'large' ? '16' : '12'} bg-gradient-to-r ${gradient} rounded-xl flex items-center justify-center mb-${size === 'large' ? '6' : '4'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className={`w-${size === 'large' ? '8' : '6'} h-${size === 'large' ? '8' : '6'} text-white`} />
+        <div className={`w-12 h-12 bg-gradient-to-r ${gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+          <Icon className="w-6 h-6 text-white" />
         </div>
         
-        <h3 className={`${size === 'large' ? 'text-2xl' : 'text-lg'} font-bold ${
+        <h3 className={`text-lg font-bold ${
           darkMode ? 'text-white' : 'text-gray-900'
         } mb-3 group-hover:text-blue-600 transition-colors duration-300`}>
           {title}
         </h3>
         
-        <p className={`${size === 'large' ? 'text-base' : 'text-sm'} ${
+        <p className={`text-sm ${
           darkMode ? 'text-gray-400' : 'text-gray-600'
-        } mb-${size === 'large' ? '6' : '4'} line-clamp-2`}>
+        } mb-4 line-clamp-2`}>
           {description}
         </p>
         
         <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-          <span className={size === 'large' ? 'text-base' : 'text-sm'}>Abrir Dashboard</span>
-          <ArrowRight className={`w-${size === 'large' ? '5' : '4'} h-${size === 'large' ? '5' : '4'} ml-2`} />
+          <span className="text-sm">Abrir Dashboard</span>
+          <ArrowRight className="w-4 h-4 ml-2" />
         </div>
       </div>
       
       {/* Background decoration */}
-      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-r ${gradient} opacity-5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500`}></div>
-    </Link>
-  );
-
-  const AppCard: React.FC<{
-    title: string;
-    description: string;
-    icon: React.ElementType;
-    path: string;
-    gradient: string;
-    bgGradient: string;
-    darkBgGradient: string;
-  }> = ({ title, description, icon: Icon, path, gradient, bgGradient, darkBgGradient }) => (
-    <Link
-      to={path}
-      className={`group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-br ${
-        darkMode ? darkBgGradient : bgGradient
-      } border ${
-        darkMode ? 'border-gray-700' : 'border-gray-200'
-      } shadow-xl`}
-    >
-      <div className="relative z-10">
-        <div className={`w-20 h-20 bg-gradient-to-r ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-10 h-10 text-white" />
-        </div>
-        
-        <h3 className={`text-2xl font-bold ${
-          darkMode ? 'text-white' : 'text-gray-900'
-        } mb-4 group-hover:text-blue-600 transition-colors duration-300`}>
-          {title}
-        </h3>
-        
-        <p className={`text-base ${
-          darkMode ? 'text-gray-400' : 'text-gray-600'
-        } mb-6 line-clamp-3`}>
-          {description}
-        </p>
-        
-        <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-          <span className="text-base">Abrir Aplicación</span>
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </div>
-      </div>
-      
-      {/* Background decoration */}
-      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-r ${gradient} opacity-10 rounded-full -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-500`}></div>
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-r ${gradient} opacity-10 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500`}></div>
     </Link>
   );
 
@@ -231,9 +183,9 @@ export const HomePage: React.FC<HomePageProps> = ({ darkMode }) => {
             Aplicaciones
           </h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {apps.map((app, index) => (
-            <AppCard key={index} {...app} />
+            <DashboardCard key={index} {...app} />
           ))}
         </div>
       </section>
@@ -250,7 +202,7 @@ export const HomePage: React.FC<HomePageProps> = ({ darkMode }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {maintenanceDashboards.map((dashboard, index) => (
-            <DashboardCard key={index} {...dashboard} size="large" />
+            <DashboardCard key={index} {...dashboard} />
           ))}
         </div>
       </section>
