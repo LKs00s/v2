@@ -158,6 +158,7 @@ function App() {
                 <Route 
                   path="/dashboards/plan-mantenimiento" 
                   element={<PlanMantenimiento darkMode={darkMode} />} 
+                />
                 <Route 
                   path="/dashboards/general" 
                   element={<PlaceholderPage title="Dashboard General" darkMode={darkMode} />} 
