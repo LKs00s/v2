@@ -302,6 +302,19 @@ export const QuotationsAnalyzer: React.FC<QuotationsAnalyzerProps> = ({ darkMode
 
   return (
     <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ${isEmbedded ? 'pb-20' : ''}`}>
+      {/* Header */}
+      <div className="mb-8 text-center">
+        <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <FileSpreadsheet className="w-8 h-8 text-white" />
+        </div>
+        <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} mb-2`}>
+          Analizador de Cotizaciones
+        </h1>
+        <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+          Sistema profesional de análisis y gestión de cotizaciones
+        </p>
+      </div>
+
       {/* Refresh Button */}
       <div className="mb-6 flex justify-end">
         <button
