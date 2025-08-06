@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { FileSpreadsheet, RefreshCw } from 'lucide-react';
 import { Navbar } from './shared/components/Navbar';
+import { HomePage } from './pages/HomePage';
 import { QuotationsAnalyzer } from './apps/quotations-analyzer/pages/QuotationsAnalyzer';
 import { EventsRegistry } from './apps/events-registry/pages/EventsRegistry';
 import { PlanMantenimiento } from './apps/dashboards/plan-mantenimiento/pages/PlanMantenimiento';
@@ -139,6 +140,10 @@ function App() {
               <Routes>
                 <Route 
                   path="/" 
+                  element={<HomePage darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/cotizaciones" 
                   element={<QuotationsAnalyzer darkMode={darkMode} />} 
                 />
                 <Route 

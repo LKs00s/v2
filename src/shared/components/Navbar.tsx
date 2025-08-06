@@ -186,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               setIsOpen={setIsAppsOpen}
               ref={appsRef}
             >
-              <DropdownItem to="/">
+              <DropdownItem to="/cotizaciones">
                 <Calculator className="w-4 h-4 mr-2" />
                 Analizador de Cotizaciones
               </DropdownItem>
@@ -328,9 +328,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   Apps
                 </div>
                 <Link
-                  to="/"
+                  to="/cotizaciones"
                   className={`block px-6 py-2 rounded-md text-sm ${
-                    isActivePath('/')
+                    isActivePath('/cotizaciones')
                       ? darkMode 
                         ? 'bg-blue-900/50 text-blue-300' 
                         : 'bg-blue-50 text-blue-700'
