@@ -339,7 +339,7 @@ export class EventService {
         }
       }
 
-      if (filters.tipoTarjeta && event['Tipo de tarjeta'] !== filters.tipoTarjeta) return false;
+      if (filters.tipoEvento && event['Tipo de evento'] !== filters.tipoEvento) return false;
       if (filters.autor && event['Autor'] !== filters.autor) return false;
       if (filters.ubicacion && event['Ubicación'] !== filters.ubicacion) return false;
       if (filters.tag && event['Tag del equipo'] !== filters.tag) return false;
