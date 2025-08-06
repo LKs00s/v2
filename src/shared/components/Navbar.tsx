@@ -171,7 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               <img 
                 src="/Logo (2).png" 
                 alt="Operations Analytics Platform" 
-                className="w-10 h-10 mr-3 object-contain"
+                className="w-12 h-12 mr-3 object-contain"
               />
               <div className="hidden md:block">
                 <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
