@@ -11,7 +11,7 @@ export const PlanMantenimiento: React.FC<PlanMantenimientoProps> = ({ darkMode }
         title="Dashboard Base de Datos online v1 - copia" 
         width="100%" 
         height="100%" 
-        src="https://app.powerbi.com/view?r=eyJrIjoiY2U5MTMyZDctZDM4Ny00MjgzLWFhZDQtNDQxM2Y3ZjFjYTIwIiwidCI6IjM2MDBmOGJiLWQ4NDMtNDg4OS1iYjk0LTJkNmUxYjAyMTZmMyIsImMiOjR9" 
+        src="https://app.powerbi.com/reportEmbed?reportId=c6ac4fba-8807-4142-9665-22846b685980&autoAuth=true&ctid=9c18a033-1567-4bb1-9a27-a31df11675fd" 
         frameBorder="0" 
         allowFullScreen={true}
       />
