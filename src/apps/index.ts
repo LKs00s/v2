@@ -4,6 +4,10 @@ export { EventsRegistry } from './events-registry/pages/EventsRegistry';
 export { PlanMantenimiento } from './dashboards/plan-mantenimiento/pages/PlanMantenimiento';
 export { GestionPresupuesto } from './dashboards/gestion-presupuesto/pages/GestionPresupuesto';
 export { RilesAS } from './dashboards/riles-as/pages/RilesAS';
+export { EnergiaElectrica } from './dashboards/energia-electrica/pages/EnergiaElectrica';
+export { Agua } from './dashboards/agua/pages/Agua';
+export { Vapor } from './dashboards/vapor/pages/Vapor';
+export { Nitrogeno } from './dashboards/nitrogeno/pages/Nitrogeno';
 
 // Tipos de apps
 export type { Quotation, QuotationFilters, SortOptions } from './quotations-analyzer/types/quotation';
