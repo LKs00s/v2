@@ -242,4 +242,4 @@ npm run lint
 
 ---
 
-**Desarrollado con ❤️ usando React, TypeScript y Tailwind CSS**
+**Desarrollado usando React, TypeScript y Tailwind CSS**
