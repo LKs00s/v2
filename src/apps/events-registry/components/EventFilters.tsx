@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Filter, Calendar, ArrowUpDown, MapPin, User, AlertTriangle } from 'lucide-react';
+import { Search, Filter, Calendar, ArrowUpDown, MapPin, User, AlertTriangle, Tag } from 'lucide-react';
 import { EventFilters as Filters, MaintenanceEvent, EventSortOptions } from '../types/event';
 
 interface EventFiltersProps {
@@ -12,8 +12,7 @@ interface EventFiltersProps {
   uniqueTypes: string[];
   uniqueLocations: string[];
   uniqueResponsibles: string[];
-  uniqueStates: string[];
-  uniquePriorities: string[];
+  uniqueTags: string[];
 }
 
 export const EventFilters: React.FC<EventFiltersProps> = ({
@@ -25,8 +24,7 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
   uniqueTypes,
   uniqueLocations,
   uniqueResponsibles,
-  uniqueStates,
-  uniquePriorities
+  uniqueTags
 }) => {
   const handleFilterChange = (key: keyof Filters, value: string) => {
     onFiltersChange({
@@ -80,12 +78,10 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
             >
               <option value="fecha-desc">Fecha: Más Reciente</option>
               <option value="fecha-asc">Fecha: Más Antigua</option>
-              <option value="prioridad-desc">Prioridad: Alta a Baja</option>
-              <option value="prioridad-asc">Prioridad: Baja a Alta</option>
-              <option value="estado-asc">Estado: A-Z</option>
-              <option value="estado-desc">Estado: Z-A</option>
               <option value="tipo-asc">Tipo: A-Z</option>
               <option value="tipo-desc">Tipo: Z-A</option>
+              <option value="autor-asc">Autor: A-Z</option>
+              <option value="autor-desc">Autor: Z-A</option>
             </select>
           </div>
         </div>
@@ -103,9 +99,14 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
       </div>
 
       {/* Filtros */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         {/* Búsqueda general */}
         <div className="relative">
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Búsqueda General
+          </label>
           <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
             darkMode ? 'text-gray-400' : 'text-gray-400'
           }`} />
@@ -122,14 +123,50 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           />
         </div>
 
-        {/* Tipo de evento */}
+        {/* Año/Mes */}
         <div className="relative">
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Año/Mes
+          </label>
+          <Calendar className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
+            darkMode ? 'text-gray-400' : 'text-gray-400'
+          }`} />
+          <select
+            value={filters.anoMes || ''}
+            onChange={(e) => handleFilterChange('anoMes', e.target.value)}
+            className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
+              darkMode 
+                ? 'bg-gray-700 border-gray-600 text-white' 
+                : 'bg-white border-gray-300 text-gray-900'
+            }`}
+          >
+            <option value="">Todos los períodos</option>
+            <option value="2025-07">Julio 2025</option>
+            <option value="2025-06">Junio 2025</option>
+            <option value="2025-05">Mayo 2025</option>
+            <option value="2025-04">Abril 2025</option>
+            <option value="2025-03">Marzo 2025</option>
+            <option value="2025-02">Febrero 2025</option>
+            <option value="2025-01">Enero 2025</option>
+            <option value="2024">Todo 2024</option>
+          </select>
+        </div>
+
+        {/* Tipo de tarjeta */}
+        <div className="relative">
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Tipo de Tarjeta
+          </label>
           <AlertTriangle className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
             darkMode ? 'text-gray-400' : 'text-gray-400'
           }`} />
           <select
-            value={filters.tipo || ''}
-            onChange={(e) => handleFilterChange('tipo', e.target.value)}
+            value={filters.tipoTarjeta || ''}
+            onChange={(e) => handleFilterChange('tipoTarjeta', e.target.value)}
             className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
               darkMode 
                 ? 'bg-gray-700 border-gray-600 text-white' 
@@ -143,8 +180,39 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           </select>
         </div>
 
+        {/* Autor */}
+        <div className="relative">
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Autor
+          </label>
+          <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
+            darkMode ? 'text-gray-400' : 'text-gray-400'
+          }`} />
+          <select
+            value={filters.autor || ''}
+            onChange={(e) => handleFilterChange('autor', e.target.value)}
+            className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
+              darkMode 
+                ? 'bg-gray-700 border-gray-600 text-white' 
+                : 'bg-white border-gray-300 text-gray-900'
+            }`}
+          >
+            <option value="">Todos los autores</option>
+            {uniqueResponsibles.map(author => (
+              <option key={author} value={author}>{author}</option>
+            ))}
+          </select>
+        </div>
+
         {/* Ubicación */}
         <div className="relative">
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Ubicación
+          </label>
           <MapPin className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
             darkMode ? 'text-gray-400' : 'text-gray-400'
           }`} />
@@ -164,91 +232,30 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           </select>
         </div>
 
-        {/* Responsable */}
+        {/* Tag del equipo */}
         <div className="relative">
-          <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
+          <label className={`block text-xs font-medium mb-1 ${
+            darkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Tag del Equipo
+          </label>
+          <Tag className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
             darkMode ? 'text-gray-400' : 'text-gray-400'
           }`} />
           <select
-            value={filters.responsable || ''}
-            onChange={(e) => handleFilterChange('responsable', e.target.value)}
+            value={filters.tag || ''}
+            onChange={(e) => handleFilterChange('tag', e.target.value)}
             className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
               darkMode 
                 ? 'bg-gray-700 border-gray-600 text-white' 
                 : 'bg-white border-gray-300 text-gray-900'
             }`}
           >
-            <option value="">Todos los responsables</option>
-            {uniqueResponsibles.map(responsible => (
-              <option key={responsible} value={responsible}>{responsible}</option>
+            <option value="">Todos los tags</option>
+            {uniqueTags.map(tag => (
+              <option key={tag} value={tag}>{tag}</option>
             ))}
           </select>
-        </div>
-
-        {/* Estado */}
-        <select
-          value={filters.estado || ''}
-          onChange={(e) => handleFilterChange('estado', e.target.value)}
-          className={`w-full px-3 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-            darkMode 
-              ? 'bg-gray-700 border-gray-600 text-white' 
-              : 'bg-white border-gray-300 text-gray-900'
-          }`}
-        >
-          <option value="">Todos los estados</option>
-          {uniqueStates.map(state => (
-            <option key={state} value={state}>{state}</option>
-          ))}
-        </select>
-
-        {/* Prioridad */}
-        <select
-          value={filters.prioridad || ''}
-          onChange={(e) => handleFilterChange('prioridad', e.target.value)}
-          className={`w-full px-3 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-            darkMode 
-              ? 'bg-gray-700 border-gray-600 text-white' 
-              : 'bg-white border-gray-300 text-gray-900'
-          }`}
-        >
-          <option value="">Todas las prioridades</option>
-          {uniquePriorities.map(priority => (
-            <option key={priority} value={priority}>{priority}</option>
-          ))}
-        </select>
-
-        {/* Fecha desde */}
-        <div className="relative">
-          <Calendar className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
-            darkMode ? 'text-gray-400' : 'text-gray-400'
-          }`} />
-          <input
-            type="date"
-            value={filters.fechaDesde || ''}
-            onChange={(e) => handleFilterChange('fechaDesde', e.target.value)}
-            className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-              darkMode 
-                ? 'bg-gray-700 border-gray-600 text-white' 
-                : 'bg-white border-gray-300 text-gray-900'
-            }`}
-          />
-        </div>
-
-        {/* Fecha hasta */}
-        <div className="relative">
-          <Calendar className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
-            darkMode ? 'text-gray-400' : 'text-gray-400'
-          }`} />
-          <input
-            type="date"
-            value={filters.fechaHasta || ''}
-            onChange={(e) => handleFilterChange('fechaHasta', e.target.value)}
-            className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-              darkMode 
-                ? 'bg-gray-700 border-gray-600 text-white' 
-                : 'bg-white border-gray-300 text-gray-900'
-            }`}
-          />
         </div>
       </div>
     </div>

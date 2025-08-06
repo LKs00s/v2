@@ -30,17 +30,15 @@ export interface MaintenanceEventLegacy {
 
 export interface EventFilters {
   search?: string;
-  tipo?: string;
+  anoMes?: string;
+  tipoTarjeta?: string;
+  autor?: string;
   ubicacion?: string;
-  responsable?: string;
-  estado?: string;
-  prioridad?: string;
-  fechaDesde?: string;
-  fechaHasta?: string;
+  tag?: string;
 }
 
 export interface EventSortOptions {
-  field: 'fecha' | 'prioridad' | 'estado' | 'tipo';
+  field: 'fecha' | 'tipo' | 'autor';
   order: 'asc' | 'desc';
 }
 
