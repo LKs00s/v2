@@ -56,6 +56,20 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
     return eventService.getStatistics(filteredData);
   }, [filteredData]);
 
+  // Datos filtrados para calcular opciones de filtros dinámicos
+  const filteredDataForFilters = useMemo(() => {
+    let baseData = data;
+    
+    if (filters.search) {
+      baseData = baseData.filter(row => {
+        const searchableText = Object.values(row).join(' ').toLowerCase();
+        return searchableText.includes(filters.search!.toLowerCase());
+      });
+    }
+    
+    return baseData;
+  }, [data, filters.search]);
+
   // Valores únicos para filtros
   const uniqueTypes = useMemo(() => {
     return eventService.getUniqueValues(data, 'Tipo de evento');
@@ -142,19 +156,6 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
     return eventService.getUniqueValues(baseData, 'Tag del equipo');
   }, [filteredDataForFilters, filters.tipoEvento, filters.ubicacion, filters.autor, filters.anoMes]);
 
-  // Datos filtrados para calcular opciones de filtros dinámicos
-  const filteredDataForFilters = useMemo(() => {
-    let baseData = data;
-    
-    if (filters.search) {
-      baseData = baseData.filter(row => {
-        const searchableText = Object.values(row).join(' ').toLowerCase();
-        return searchableText.includes(filters.search!.toLowerCase());
-      });
-    }
-    
-    return baseData;
-  }, [data, filters.search]);
   if (loading) {
     return (
       <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'} flex items-center justify-center`}>
