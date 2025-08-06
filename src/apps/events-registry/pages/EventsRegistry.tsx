@@ -144,7 +144,29 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
       </div>
 
       {/* Refresh Button */}
-      <div className="mb-6 flex justify-end">
+      <div className="mb-6 flex justify-end space-x-3">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdkmoOiQIG61G3cc9ygOSZT0YqOWMOSI6XJAD3bNxrNBfDoqg/viewform?usp=dialog"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        >
+          <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+          </svg>
+          Formulario de Registro
+        </a>
+        <a
+          href="https://docs.google.com/spreadsheets/d/1RHmUt3Wezd0r0jBFDTrLFxtdlfdgsX5l9FgoTQnSJoU/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        >
+          <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19,3H5C3.9,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.9 20.1,3 19,3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17Z" />
+          </svg>
+          Ver Planilla
+        </a>
         <button
           onClick={loadData}
           className="flex items-center px-4 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
