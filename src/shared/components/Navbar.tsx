@@ -220,6 +220,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
               <DropdownItem to="/dashboards/plan-mantenimiento">
                 📊 Plan de Mantenimiento
               </DropdownItem>
+              <DropdownItem to="/dashboards/gestion-presupuesto">
+                💰 Gestión de Presupuesto
+              </DropdownItem>
               <DropdownItem to="/dashboards/general">
                 📈 Dashboard General
               </DropdownItem>
@@ -433,6 +436,21 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, user }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   📊 Plan de Mantenimiento
+                </Link>
+                <Link
+                  to="/dashboards/gestion-presupuesto"
+                  className={`block px-6 py-2 rounded-md text-sm ${
+                    isActivePath('/dashboards/gestion-presupuesto')
+                      ? darkMode 
+                        ? 'bg-green-900/50 text-green-300' 
+                        : 'bg-green-50 text-green-700'
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  💰 Gestión de Presupuesto
                 </Link>
                 <Link
                   to="/dashboards/general"

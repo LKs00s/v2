@@ -5,6 +5,7 @@ import { Navbar } from './shared/components/Navbar';
 import { QuotationsAnalyzer } from './apps/quotations-analyzer/pages/QuotationsAnalyzer';
 import { EventsRegistry } from './apps/events-registry/pages/EventsRegistry';
 import { PlanMantenimiento } from './apps/dashboards/plan-mantenimiento/pages/PlanMantenimiento';
+import { GestionPresupuesto } from './apps/dashboards/gestion-presupuesto/pages/GestionPresupuesto';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
@@ -158,6 +159,10 @@ function App() {
                 <Route 
                   path="/dashboards/plan-mantenimiento" 
                   element={<PlanMantenimiento darkMode={darkMode} />} 
+                />
+                <Route 
+                  path="/dashboards/gestion-presupuesto" 
+                  element={<GestionPresupuesto darkMode={darkMode} />} 
                 />
                 <Route 
                   path="/dashboards/general" 

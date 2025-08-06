@@ -2,6 +2,7 @@
 export { QuotationsAnalyzer } from './quotations-analyzer/pages/QuotationsAnalyzer';
 export { EventsRegistry } from './events-registry/pages/EventsRegistry';
 export { PlanMantenimiento } from './dashboards/plan-mantenimiento/pages/PlanMantenimiento';
+export { GestionPresupuesto } from './dashboards/gestion-presupuesto/pages/GestionPresupuesto';
 
 // Tipos de apps
 export type { Quotation, QuotationFilters, SortOptions } from './quotations-analyzer/types/quotation';
