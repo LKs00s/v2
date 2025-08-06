@@ -1,0 +1,23 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "frame-ancestors 'self' *;"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+# Handle OAuth redirects from localhost
+[[redirects]]
+  from = "/#access_token=*"
+  to = "/index.html"
+  status = 200
