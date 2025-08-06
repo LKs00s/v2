@@ -321,18 +321,28 @@ export class EventService {
         if (!searchableText.includes(filters.search.toLowerCase())) return false;
       }
 
-      if (filters.tipo && event['Tipo de evento'] !== filters.tipo) return false;
-      if (filters.ubicacion && event['Ubicación'] !== filters.ubicacion) return false;
-      if (filters.responsable && event['Autor'] !== filters.responsable) return false;
-      // Campos que no existen en el nuevo formato se ignoran por ahora
-      // if (filters.estado && event['Estado'] !== filters.estado) return false;
-      // if (filters.prioridad && event['Prioridad'] !== filters.prioridad) return false;
-
-      if (filters.fechaDesde || filters.fechaHasta) {
-        const eventDate = this.parseDate(event['Fecha detección anomalía']);
-        if (filters.fechaDesde && eventDate < new Date(filters.fechaDesde)) return false;
-        if (filters.fechaHasta && eventDate > new Date(filters.fechaHasta)) return false;
+      if (filters.anoMes) {
+        const eventDate = event['Fecha detección anomalía'];
+        if (eventDate) {
+          // Convertir fecha DD-MM-YYYY a YYYY-MM para comparar
+          const parts = eventDate.split('-');
+          if (parts.length === 3) {
+            const eventYearMonth = `${parts[2]}-${parts[1]}`;
+            if (filters.anoMes.length === 4) {
+              // Solo año (ej: "2024")
+              if (!eventYearMonth.startsWith(filters.anoMes)) return false;
+            } else {
+              // Año-mes (ej: "2025-07")
+              if (eventYearMonth !== filters.anoMes) return false;
+            }
+          }
+        }
       }
+
+      if (filters.tipoTarjeta && event['Tipo de tarjeta'] !== filters.tipoTarjeta) return false;
+      if (filters.autor && event['Autor'] !== filters.autor) return false;
+      if (filters.ubicacion && event['Ubicación'] !== filters.ubicacion) return false;
+      if (filters.tag && event['Tag del equipo'] !== filters.tag) return false;
 
       return true;
     });
@@ -346,16 +356,11 @@ export class EventService {
         case 'fecha':
           comparison = this.parseDate(a['Fecha detección anomalía']).getTime() - this.parseDate(b['Fecha detección anomalía']).getTime();
           break;
-        case 'prioridad':
-          // Sin campo de prioridad, ordenar por tipo de evento
-          comparison = a['Tipo de evento'].localeCompare(b['Tipo de evento']);
-          break;
-        case 'estado':
-          // Sin campo de estado, ordenar por autor
-          comparison = a['Autor'].localeCompare(b['Autor']);
-          break;
         case 'tipo':
-          comparison = a['Tipo de evento'].localeCompare(b['Tipo de evento']);
+          comparison = a['Tipo de tarjeta'].localeCompare(b['Tipo de tarjeta']);
+          break;
+        case 'autor':
+          comparison = a['Autor'].localeCompare(b['Autor']);
           break;
       }
       

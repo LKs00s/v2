@@ -58,88 +58,19 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
 
   // Valores únicos para filtros
   const uniqueTypes = useMemo(() => {
-    return eventService.getUniqueValues(data, 'Tipo de evento');
+    return eventService.getUniqueValues(data, 'Tipo de tarjeta');
   }, [data]);
 
-  // Datos filtrados para calcular opciones de filtros dinámicos
-  const filteredDataForFilters = useMemo(() => {
-    // Aplicar todos los filtros excepto el que estamos calculando
-    let baseData = data;
-    
-    if (filters.search) {
-      baseData = baseData.filter(event => {
-        const searchableText = Object.values(event).join(' ').toLowerCase();
-        return searchableText.includes(filters.search!.toLowerCase());
-      });
-    }
-    
-    return baseData;
-  }, [data, filters.search]);
-
-  // Filtros dinámicos basados en la selección actual
-  const dynamicUniqueLocations = useMemo(() => {
-    let baseData = filteredDataForFilters;
-    
-    if (filters.tipo) baseData = baseData.filter(event => event['Tipo de tarjeta'] === filters.tipo);
-    if (filters.responsable) baseData = baseData.filter(event => event['Autor'] === filters.responsable);
-    if (filters.estado) baseData = baseData.filter(event => event['Autor'] === filters.estado);
-    if (filters.prioridad) baseData = baseData.filter(event => event['Autor'] === filters.prioridad);
-    if (filters.fechaDesde || filters.fechaHasta) {
-      baseData = baseData.filter(event => {
-        const eventDate = eventService.parseDate ? eventService.parseDate(event['Fecha detección anomalía']) : new Date(event['Fecha detección anomalía']);
-        if (filters.fechaDesde && eventDate < new Date(filters.fechaDesde)) return false;
-        if (filters.fechaHasta && eventDate > new Date(filters.fechaHasta)) return false;
-        return true;
-      });
-    }
-    
-    return eventService.getUniqueValues(baseData, 'Ubicación');
-  }, [filteredDataForFilters, filters.tipo, filters.responsable, filters.estado, filters.prioridad, filters.fechaDesde, filters.fechaHasta]);
-
-  const dynamicUniqueResponsibles = useMemo(() => {
-    let baseData = filteredDataForFilters;
-    
-    if (filters.tipo) baseData = baseData.filter(event => event['Tipo de tarjeta'] === filters.tipo);
-    if (filters.ubicacion) baseData = baseData.filter(event => event['Ubicación'] === filters.ubicacion);
-    if (filters.estado) baseData = baseData.filter(event => event['Autor'] === filters.estado);
-    if (filters.prioridad) baseData = baseData.filter(event => event['Autor'] === filters.prioridad);
-    if (filters.fechaDesde || filters.fechaHasta) {
-      baseData = baseData.filter(event => {
-        const eventDate = eventService.parseDate ? eventService.parseDate(event['Fecha detección anomalía']) : new Date(event['Fecha detección anomalía']);
-        if (filters.fechaDesde && eventDate < new Date(filters.fechaDesde)) return false;
-        if (filters.fechaHasta && eventDate > new Date(filters.fechaHasta)) return false;
-        return true;
-      });
-    }
-    
-    return eventService.getUniqueValues(baseData, 'Autor');
-  }, [filteredDataForFilters, filters.tipo, filters.ubicacion, filters.estado, filters.prioridad, filters.fechaDesde, filters.fechaHasta]);
-
-  const dynamicUniqueTypes = useMemo(() => {
-    let baseData = filteredDataForFilters;
-    
-    if (filters.ubicacion) baseData = baseData.filter(event => event['Ubicación'] === filters.ubicacion);
-    if (filters.responsable) baseData = baseData.filter(event => event['Autor'] === filters.responsable);
-    if (filters.estado) baseData = baseData.filter(event => event['Autor'] === filters.estado);
-    if (filters.prioridad) baseData = baseData.filter(event => event['Autor'] === filters.prioridad);
-    if (filters.fechaDesde || filters.fechaHasta) {
-      baseData = baseData.filter(event => {
-        const eventDate = eventService.parseDate ? eventService.parseDate(event['Fecha detección anomalía']) : new Date(event['Fecha detección anomalía']);
-        if (filters.fechaDesde && eventDate < new Date(filters.fechaDesde)) return false;
-        if (filters.fechaHasta && eventDate > new Date(filters.fechaHasta)) return false;
-        return true;
-      });
-    }
-    
-    return eventService.getUniqueValues(baseData, 'Tipo de tarjeta');
-  }, [filteredDataForFilters, filters.ubicacion, filters.responsable, filters.estado, filters.prioridad, filters.fechaDesde, filters.fechaHasta]);
-
-  const uniqueStates = useMemo(() => {
-    return ['Completado', 'En Progreso', 'Pendiente']; // Valores simulados
+  const uniqueLocations = useMemo(() => {
+    return eventService.getUniqueValues(data, 'Ubicación');
   }, []);
 
-  const uniquePriorities = useMemo(() => {
-    return ['Crítica', 'Alta', 'Media', 'Baja']; // Valores simulados
+  const uniqueResponsibles = useMemo(() => {
+    return eventService.getUniqueValues(data, 'Autor');
+  }, []);
+
+  const uniqueTags = useMemo(() => {
+    return eventService.getUniqueValues(data, 'Tag del equipo');
   }, []);
 
   if (loading) {
@@ -252,11 +183,10 @@ export const EventsRegistry: React.FC<EventsRegistryProps> = ({ darkMode }) => {
         sortOptions={sortOptions}
         onSortChange={setSortOptions}
         data={data}
-        uniqueTypes={dynamicUniqueTypes}
-        uniqueLocations={dynamicUniqueLocations}
-        uniqueResponsibles={dynamicUniqueResponsibles}
-        uniqueStates={uniqueStates}
-        uniquePriorities={uniquePriorities}
+        uniqueTypes={uniqueTypes}
+        uniqueLocations={uniqueLocations}
+        uniqueResponsibles={uniqueResponsibles}
+        uniqueTags={uniqueTags}
       />
 
       {/* Main Content */}
