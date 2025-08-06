@@ -390,4 +390,14 @@ export class EventService {
     if (!timeStr) return 'N/A';
     return timeStr;
   }
+
+  // Método público para parsing de fechas (usado en filtros dinámicos)
+  parseDate(dateStr: string): Date {
+    if (!dateStr) return new Date();
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+    }
+    return new Date(dateStr);
+  }
 }
