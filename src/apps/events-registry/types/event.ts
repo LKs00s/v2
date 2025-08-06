@@ -46,9 +46,6 @@ export interface EventStatistics {
   totalEvents: number;
   completedEvents: number;
   pendingEvents: number;
-  inProgressEvents: number;
-  avgCompletionTime: number;
-  totalCost: number;
 }
 
 export interface MediaItem {

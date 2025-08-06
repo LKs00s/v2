@@ -8,13 +8,6 @@ interface EventStatsProps {
 }
 
 export const EventStats: React.FC<EventStatsProps> = ({ darkMode, statistics }) => {
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP'
-    }).format(amount);
-  };
-
   const StatCard: React.FC<{ 
     icon: React.ReactNode; 
     title: string; 
@@ -53,7 +46,7 @@ export const EventStats: React.FC<EventStatsProps> = ({ darkMode, statistics }) 
     : 0;
 
   return (
-    <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+    <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
       <StatCard
         icon={<Calendar className="w-6 h-6 text-white" />}
         title="Total de Eventos"
@@ -70,32 +63,10 @@ export const EventStats: React.FC<EventStatsProps> = ({ darkMode, statistics }) 
       />
       
       <StatCard
-        icon={<Clock className="w-6 h-6 text-white" />}
-        title="En Progreso"
-        value={statistics.inProgressEvents.toString()}
-        color="bg-gradient-to-r from-yellow-600 to-yellow-700"
-      />
-      
-      <StatCard
         icon={<AlertTriangle className="w-6 h-6 text-white" />}
         title="Pendientes"
         value={statistics.pendingEvents.toString()}
         color="bg-gradient-to-r from-red-600 to-red-700"
-      />
-      
-      <StatCard
-        icon={<TrendingUp className="w-6 h-6 text-white" />}
-        title="Tiempo Promedio"
-        value={`${statistics.avgCompletionTime.toFixed(1)}h`}
-        subtitle="de finalización"
-        color="bg-gradient-to-r from-purple-600 to-purple-700"
-      />
-      
-      <StatCard
-        icon={<DollarSign className="w-6 h-6 text-white" />}
-        title="Costo Total"
-        value={formatCurrency(statistics.totalCost)}
-        color="bg-gradient-to-r from-orange-600 to-orange-700"
       />
     </div>
   );

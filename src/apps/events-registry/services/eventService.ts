@@ -296,21 +296,11 @@ export class EventService {
     // Para mantener compatibilidad, usaremos campos simulados
     const completedEvents = Math.floor(data.length * 0.6); // 60% completados
     const pendingEvents = Math.floor(data.length * 0.2); // 20% pendientes  
-    const inProgressEvents = data.length - completedEvents - pendingEvents; // resto en progreso
-
-    // Tiempo promedio simulado
-    const avgCompletionTime = 4.5;
-
-    // Costo total simulado
-    const totalCost = data.length * 150000;
 
     return {
       totalEvents,
       completedEvents,
       pendingEvents,
-      inProgressEvents,
-      avgCompletionTime,
-      totalCost
     };
   }
 
