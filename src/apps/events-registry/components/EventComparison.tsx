@@ -254,7 +254,7 @@ export const EventComparison: React.FC<EventComparisonProps> = ({ darkMode, even
                 </p>
                 <p className={`text-xs mt-1 ${
                 darkMode ? 'text-gray-500' : 'text-gray-400'
-              }`} />
+                }`}>
                   URL: {currentMedia.url.substring(0, 50)}...
                 </p>
               </div>
