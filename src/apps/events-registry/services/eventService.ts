@@ -150,10 +150,25 @@ export class EventService {
   getGoogleDriveFileId(url: string): string | null {
     if (!url || !url.includes('drive.google.com')) return null;
     
-    const fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
-    if (!fileIdMatch) return null;
+    // Patrón 1: /file/d/FILE_ID/
+    let fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
+    if (fileIdMatch) {
+      return fileIdMatch[1];
+    }
     
-    return fileIdMatch[1];
+    // Patrón 2: /open?id=FILE_ID
+    fileIdMatch = url.match(/\/open\?id=([a-zA-Z0-9-_]+)/);
+    if (fileIdMatch) {
+      return fileIdMatch[1];
+    }
+    
+    // Patrón 3: ?id=FILE_ID (en cualquier parte de la URL)
+    fileIdMatch = url.match(/[?&]id=([a-zA-Z0-9-_]+)/);
+    if (fileIdMatch) {
+      return fileIdMatch[1];
+    }
+    
+    return null;
   }
 
   // Generar URL de preview para Google Drive

@@ -217,17 +217,47 @@ export const EventComparison: React.FC<EventComparisonProps> = ({ darkMode, even
               allow="autoplay"
               allowFullScreen
               title={currentMedia.title}
+              onError={() => {
+                console.error('Error loading media:', currentMedia.fileId);
+              }}
             />
           ) : (
             <div className="text-center">
-              <Image className={`w-12 h-12 mx-auto mb-2 ${
+              <div className="flex flex-col items-center">
+                <Image className={`w-12 h-12 mx-auto mb-2 ${
+                  darkMode ? 'text-gray-500' : 'text-gray-400'
+                }`} />
+                <p className={`text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  No se pudo cargar el archivo
+                </p>
+                {currentMedia && currentMedia.url && (
+                  <p className={`text-xs mt-1 ${
+                    darkMode ? 'text-gray-500' : 'text-gray-400'
+                  }`}>
+                    URL: {currentMedia.url.substring(0, 50)}...
+                  </p>
+                )}
+              </div>
+            )}
+          ) : currentMedia && !currentMedia.fileId ? (
+            <div className="text-center">
+              <div className="flex flex-col items-center">
+                <Image className={`w-12 h-12 mx-auto mb-2 ${
+                  darkMode ? 'text-gray-500' : 'text-gray-400'
+                }`} />
+                <p className={`text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  URL no válida de Google Drive
+                </p>
+                <p className={`text-xs mt-1 ${
                 darkMode ? 'text-gray-500' : 'text-gray-400'
               }`} />
-              <p className={`text-sm ${
-                darkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}>
-                No se pudo cargar el archivo
-              </p>
+                  URL: {currentMedia.url.substring(0, 50)}...
+                </p>
+              </div>
             </div>
           )}
         </div>
