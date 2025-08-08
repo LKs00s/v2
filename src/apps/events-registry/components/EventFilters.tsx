@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Filter, Calendar, ArrowUpDown, MapPin, User, AlertTriangle, Tag } from 'lucide-react';
+import { Search, Filter, Calendar, ArrowUpDown, MapPin, User, AlertTriangle, Tag, CheckCircle } from 'lucide-react';
 import { EventFilters as Filters, MaintenanceEvent, EventSortOptions } from '../types/event';
 
 interface EventFiltersProps {
@@ -82,6 +82,7 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
               <option value="tipo-desc">Tipo: Z-A</option>
               <option value="autor-asc">Autor: A-Z</option>
               <option value="autor-desc">Autor: Z-A</option>
+            </select>
             <CheckCircle className="w-4 h-4" />
           </div>
         </div>
