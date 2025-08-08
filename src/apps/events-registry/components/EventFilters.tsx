@@ -82,7 +82,7 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
               <option value="tipo-desc">Tipo: Z-A</option>
               <option value="autor-asc">Autor: A-Z</option>
               <option value="autor-desc">Autor: Z-A</option>
-            </select>
+            <CheckCircle className="w-4 h-4" />
           </div>
         </div>
         

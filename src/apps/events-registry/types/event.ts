@@ -35,6 +35,7 @@ export interface EventFilters {
   autor?: string;
   ubicacion?: string;
   tag?: string;
+  estado?: string;
 }
 
 export interface EventSortOptions {

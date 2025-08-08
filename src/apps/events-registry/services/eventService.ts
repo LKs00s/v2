@@ -308,9 +308,17 @@ export class EventService {
 
   getStatistics(data: MaintenanceEvent[]): EventStatistics {
     const totalEvents = data.length;
-    // Para mantener compatibilidad, usaremos campos simulados
-    const completedEvents = Math.floor(data.length * 0.6); // 60% completados
-    const pendingEvents = Math.floor(data.length * 0.2); // 20% pendientes  
+    
+    // Calcular eventos completados basándose en si tienen registros de solución
+    let completedEvents = 0;
+    data.forEach(event => {
+      const { solutionMedia } = this.processEventMedia(event);
+      if (solutionMedia.length > 0) {
+        completedEvents++;
+      }
+    });
+    
+    const pendingEvents = totalEvents - completedEvents;
 
     return {
       totalEvents,
@@ -324,6 +332,15 @@ export class EventService {
       if (filters.search) {
         const searchableText = Object.values(event).join(' ').toLowerCase();
         if (!searchableText.includes(filters.search.toLowerCase())) return false;
+      }
+
+      // Filtro por estado (completado/pendiente)
+      if (filters.estado) {
+        const { solutionMedia } = this.processEventMedia(event);
+        const isCompleted = solutionMedia.length > 0;
+        
+        if (filters.estado === 'Completado' && !isCompleted) return false;
+        if (filters.estado === 'Pendiente' && isCompleted) return false;
       }
 
       if (filters.anoMes) {
